@@ -10,7 +10,7 @@ LIBS := $(HLIB_DIR)/SPI
 LIBS += $(HLIB_DIR)/ESP8266WiFi
 LIBS += $(ULIB_DIR)/Adafruit-GFX-Library
 LIBS += $(ULIB_DIR)/Adafruit_ILI9341-master
-LIBS += $(ULIB_DIR)/Humblesoft_ILI9341
+# LIBS += $(ULIB_DIR)/Humblesoft_ILI9341
 
 include makeEspArduino.mk
 

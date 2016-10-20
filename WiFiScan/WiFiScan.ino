@@ -5,7 +5,6 @@
 #include "SPI.h"
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
-#include "Humblesoft_ILI9341.h"
 #include "ESP8266WiFi.h"
 
 #define WiFiMax	10
@@ -16,8 +15,10 @@
 #define Y_STAT0  2
 #define Y_STAT  18
 
-// default connection CS-IO2,DC-IO13,RST-NC 
-Humblesoft_ILI9341 tft = Humblesoft_ILI9341();
+#define CS 	 2
+#define DC 	15
+#define RST	-1
+Adafruit_ILI9341 tft = Adafruit_ILI9341(CS,DC,RST);
 bool serial_out = false;
 
 uint16_t bg    = ILI9341_BLACK;
