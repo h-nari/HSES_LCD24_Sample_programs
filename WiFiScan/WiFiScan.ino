@@ -110,13 +110,17 @@ void loop() {
     tft.setTextColor(green, bg);
     tft.print(WiFi.SSID(j));
 
+    int16_t x = tft.getCursorX();
+    if(x < X_SIG)
+      tft.fillRect(x, y, X_SIG - x, LH, bg);
+
     tft.setCursor(X_SIG, y);
-    tft.setTextColor(cyan, bg);
+    tft.setTextColor(cyan,bg);
     tft.printf("%3d", WiFi.RSSI(j));
 
     tft.setTextSize(1);
     tft.setCursor(tft.getCursorX()+1, y + 8);
-    tft.setTextColor(blue, bg);
+    tft.setTextColor(blue,bg);
     tft.print("dBm");
 
     y += LH;
