@@ -1,0 +1,9 @@
+#define WIFI_SSID 	"your-wifi-ssid"
+#define	WIFI_PASSWORD	"your-wifi-password"
+
+#if USE_OTA
+#define OTA_HOSTNAME 	"your_ota_hostname"
+#define OTA_PASSWORD 	"your_ota_passowrd"
+// #define OTA_PORT	1234		// firewallの設定等でPORTを固定したい場合
+#endif
+

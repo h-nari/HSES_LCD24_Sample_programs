@@ -29,3 +29,7 @@
 *.app
 
 conf.h
+wifi-conf.h
+Makefile
+Memo.txt
+

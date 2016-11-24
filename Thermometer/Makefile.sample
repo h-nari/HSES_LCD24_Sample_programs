@@ -1,0 +1,32 @@
+# VERBOSE := 1
+SINGLE_THREAD := 1
+USE_PREBUILD := 1
+
+ESP_ADDR := "target_ESP8266_IP"
+# ESP_PORT := 1234			// firewallの設定等でportを規定したい場合
+ESP_PWD  := "OTA_Password"
+
+EA_DIR := C:/Users/nari/AppData/Local/Arduino15/packages/esp8266/
+HLIB_DIR := $(EA_DIR)/hardware/esp8266/2.3.0/libraries
+ULIB_DIR := C:/Users/nari/documents/Arduino/libraries
+
+LIBS := $(HLIB_DIR)/SPI
+LIBS += $(HLIB_DIR)/SD
+LIBS += $(HLIB_DIR)/EEPROM
+LIBS += $(HLIB_DIR)/ESP8266WiFi
+LIBS += $(HLIB_DIR)/ESP8266WEbServer
+LIBS += $(HLIB_DIR)/ESP8266mDNS
+LIBS += $(HLIB_DIR)/ArduinoOTA
+
+# LIBS += $(HLIB_DIR)/ESP8266HTTPClient
+LIBS += $(ULIB_DIR)/Adafruit-GFX-Library
+LIBS += $(ULIB_DIR)/Adafruit_ILI9341
+LIBS += $(ULIB_DIR)/Fontx
+LIBS += $(ULIB_DIR)/FontxGfx
+LIBS += $(ULIB_DIR)/Humblesoft_ILI9341
+LIBS += $(ULIB_DIR)/LcdTouchScreen
+LIBS += $(ULIB_DIR)/Params
+LIBS += $(ULIB_DIR)/XPT2046_Touchscreen
+
+include makeEspArduino.mk
+
