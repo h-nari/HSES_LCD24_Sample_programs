@@ -285,6 +285,8 @@ void AppGraph::update(time_t t)
       float temp;
       bool  bDrawn;
       if(m_pDB->getCurrentValue(i, &temp, &bDrawn) && !bDrawn && m_ax){
+	if(temp > m_fTempMax || temp < m_fTempMin)
+	  m_bDrawn = false;
 	drawLine(i, t, temp);
 	m_pDB->setCurrentValueDrawn(i);
       }
