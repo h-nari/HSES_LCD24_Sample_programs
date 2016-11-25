@@ -2,9 +2,14 @@
  * This sketch is customized ESP8266WiFi/WiFiScan for HSES-LCD24
  */
 
+#define USE_KANJI 1
+
 #include "SPI.h"
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
+#include "Fontx.h"
+#include "FontxGfx.h"
+#include "Humblesoft_ILI9341.h"
 #include "ESP8266WiFi.h"
 
 #define WiFiMax	10
@@ -15,10 +20,16 @@
 #define Y_STAT0  2
 #define Y_STAT  18
 
+#if USE_KANJI
+IMPORT_BIN("../RssDisp/fontx/ILGH16XB.FNT", font_h);
+IMPORT_BIN("../RssDisp/fontx/ILGZ16XB.FNT", font_z);
+extern uint8_t font_h[], font_z[];
+#endif
+
 #define CS 	 2
 #define DC 	15
 #define RST	-1
-Adafruit_ILI9341 tft = Adafruit_ILI9341(CS,DC,RST);
+Humblesoft_ILI9341 tft = Humblesoft_ILI9341(CS,DC,RST);
 bool serial_out = false;
 
 uint16_t bg    = ILI9341_BLACK;
@@ -39,7 +50,6 @@ void setup() {
   
   tft.fillRect(0,0, tft.width(), Y1, bg2);
   tft.setTextSize(3);
-  
   tft.setTextColor(black);
   tft.setCursor(5,5);
   tft.print("WiFiScan");
@@ -56,7 +66,7 @@ void setup() {
 
 void loop() {
   tft.setCursor(X_STAT, Y_STAT0);
-  tft.setTextSize(0);
+  tft.setTextSize(1);
   tft.setTextColor(white, bg2);
   tft.print("Scan START");
   
@@ -105,8 +115,13 @@ void loop() {
       Serial.printf("%s [%ddBm]\n", WiFi.SSID(j).c_str(), WiFi.RSSI(j));
     
     tft.setCursor(0, y);
-
+#if USE_KANJI
+    tft.setFontx(font_h, font_z);
+    tft.setTextSize(1);
+#else
     tft.setTextSize(2);
+#endif
+
     tft.setTextColor(green, bg);
     tft.print(WiFi.SSID(j));
 
@@ -117,7 +132,9 @@ void loop() {
     tft.setCursor(X_SIG, y);
     tft.setTextColor(cyan,bg);
     tft.printf("%3d", WiFi.RSSI(j));
-
+#if USE_KANJI
+    tft.setFontx(NULL);
+#endif
     tft.setTextSize(1);
     tft.setCursor(tft.getCursorX()+1, y + 8);
     tft.setTextColor(blue,bg);
@@ -128,6 +145,7 @@ void loop() {
   if(serial_out) Serial.println();
   tft.fillRect(0, y, tft.width(), tft.height() - y, bg);
 
+  
   // Wait a bit before scanning again
   delay(5000);
 }
