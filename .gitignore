@@ -32,4 +32,8 @@ conf.h
 wifi-conf.h
 Makefile
 Memo.txt
+wifi-conf.h.home
+wifi-conf.h.iphone
+conf.h.home
+conf.h.iphone
 
