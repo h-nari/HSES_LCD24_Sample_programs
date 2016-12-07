@@ -6,6 +6,7 @@ sample programs for HSES_LCD24(ESP-WROOM-02 + LCD module)
 
 
 <a href="https://github.com/h-nari/HSES_LCD24_Sample_programs/blob/master/img/161107a6m.jpg?raw=true"><img src="https://github.com/h-nari/HSES_LCD24_Sample_programs/blob/master/img/161107a6m.jpg?raw=true" align="left" hspace="40" width="300"/></a>
+
 * 登録したURLからRSSを取得し、タイトルを表示しつづけるプログラム。
 * ILI9341のVertical Scroll 機能を使ったスクロール表示
 * 日本語表示
@@ -30,4 +31,26 @@ sample programs for HSES_LCD24(ESP-WROOM-02 + LCD module)
 * WiFiをscanし、SSIDと信号強度を強度順に表示
 * 日本語SSIDにも対応
 
-<br clear="left/>"
+<br clear="left"/>
+
+## 別途インストールが必要なライブラリの入手先
+
+Arduino-IDEのライブラリ管理でインストールできるものもありますが、直接githubから最新版をgit cloneするか、zipファイルをダウンロードしArduino-IDEの機能でインストールするほうが安全です。
+
+* Adafruit_GFX
+ * https://github.com/adafruit/Adafruit-GFX-Library
+* Adafruit_ILI9341
+ * https://github.com/adafruit/Adafruit_ILI9341
+ * バグ修正の必要有
+  * Thermometerが動かない
+  * https://github.com/adafruit/Adafruit_ILI9341/pull/12
+* Fontx
+ * https://github.com/h-nari/Fontx
+* FontxGfx
+ * https://github.com/h-nari/FontxGfx
+* Humblesoft_ILI9341
+ * https://github.com/h-nari/Humblesoft_ILI9341
+* XPT2046_Touchscreen
+ * https://github.com/PaulStoffregen/XPT2046_Touchscreen
+* LcdTouchscreen
+ * https://github.com/h-nari/LcdTouchscreen
