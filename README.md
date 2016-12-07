@@ -38,19 +38,29 @@ sample programs for HSES_LCD24(ESP-WROOM-02 + LCD module)
 Arduino-IDEのライブラリ管理でインストールできるものもありますが、直接githubから最新版をgit cloneするか、zipファイルをダウンロードしArduino-IDEの機能でインストールするほうが安全です。
 
 * Adafruit_GFX
+ * 小型表示デバイス用描画ライブラリ、直線、図形、文字描画など
  * https://github.com/adafruit/Adafruit-GFX-Library
 * Adafruit_ILI9341
+ * コントローラにILI9341を使用したLCD用描画ライブラリ、Adafruit_GFXを継承
  * https://github.com/adafruit/Adafruit_ILI9341
  * バグ修正の必要有
   * Thermometerが動かない
   * https://github.com/adafruit/Adafruit_ILI9341/pull/12
 * Fontx
+ * Adafruit_GFX非依存, Fontxライブラリ
  * https://github.com/h-nari/Fontx
 * FontxGfx
+ * Adafruit_GFX向け、Fontx描画機能ライブラリ
  * https://github.com/h-nari/FontxGfx
 * Humblesoft_ILI9341
+ * Adafruit_ILI9341に漢字表示機能、スクロール機能などを追加
  * https://github.com/h-nari/Humblesoft_ILI9341
 * XPT2046_Touchscreen
+ * タッチスクリーン・インターフェースXPT2046ライブラリ
  * https://github.com/PaulStoffregen/XPT2046_Touchscreen
 * LcdTouchscreen
+ * タッチスクリーンライブラリ、校正(calibration)機能など
  * https://github.com/h-nari/LcdTouchscreen
+* Params
+ * タッチスクリーンの校正(calibration)結果をeepromに保存・呼び出すのに使用
+ * https://github.com/h-nari/Params
