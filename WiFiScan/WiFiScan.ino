@@ -4,7 +4,6 @@
 
 #define USE_KANJI 1
 
-#include <SPI.h>
 #include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
 #include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
