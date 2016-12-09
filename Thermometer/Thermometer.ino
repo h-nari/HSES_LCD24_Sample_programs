@@ -8,11 +8,13 @@
 #include <ESP8266mDNS.h>
 #include <stdlib.h>
 #include <time.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_ILI9341.h>
-#include <Fontx.h>
-#include <FontxGfx.h>
-#include <Humblesoft_ILI9341.h>
+
+#include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
+#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
+#include <Fontx.h>							// https://github.com/h-nari/Fontx
+#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
+
 #include <SD.h>
 #include "sdHandler.h"
 #include "LcdRoot.h"
@@ -241,3 +243,7 @@ void loop(void){
   root.update();
   queue.update();
 }
+
+/*** Local variables: ***/
+/*** tab-width:2 ***/
+/*** End: ***/

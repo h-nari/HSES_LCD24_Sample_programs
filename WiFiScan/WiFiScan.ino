@@ -4,13 +4,13 @@
 
 #define USE_KANJI 1
 
-#include "SPI.h"
-#include "Adafruit_GFX.h"
-#include "Adafruit_ILI9341.h"
-#include "Fontx.h"
-#include "FontxGfx.h"
-#include "Humblesoft_ILI9341.h"
-#include "ESP8266WiFi.h"
+#include <SPI.h>
+#include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
+#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
+#include <Fontx.h>							// https://github.com/h-nari/Fontx
+#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
+#include <ESP8266WiFi.h>
 
 #define WiFiMax	10
 #define Y1	32
@@ -21,9 +21,8 @@
 #define Y_STAT  18
 
 #if USE_KANJI
-IMPORT_BIN("../RssDisp/fontx/ILGH16XB.FNT", font_h);
-IMPORT_BIN("../RssDisp/fontx/ILGZ16XB.FNT", font_z);
-extern uint8_t font_h[], font_z[];
+#include <fontx/ILGH16XB.h>
+#include <fontx/ILGZ16XB.h>
 #endif
 
 #define CS 	 2
@@ -116,7 +115,7 @@ void loop() {
     
     tft.setCursor(0, y);
 #if USE_KANJI
-    tft.setFontx(font_h, font_z);
+		tft.setFontx(ILGH16XB,ILGZ16XB);
     tft.setTextSize(1);
 #else
     tft.setTextSize(2);
@@ -150,3 +149,6 @@ void loop() {
   delay(5000);
 }
 
+/*** Local variables: ***/
+/*** tab-width:2 ***/
+/*** End: ***/

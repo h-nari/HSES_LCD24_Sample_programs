@@ -3,11 +3,12 @@
 #include <ESP8266HTTPClient.h>
 #include <time.h>
 
-#include "Adafruit_GFX.h"
-#include "Adafruit_ILI9341.h"
-#include "Fontx.h"
-#include "FontxGfx.h"
-#include "Humblesoft_ILI9341.h"
+#include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
+#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
+#include <Fontx.h>							// https://github.com/h-nari/Fontx
+#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
+
 #include "LcdScroll.h"
 #include "rssParser.h"
 #include "rssBuf.h"
@@ -29,9 +30,8 @@ const char *site[] = {
   NULL};
 
 #if KANJI
-IMPORT_BIN("fontx/ILGH16XB.FNT", font_h);
-IMPORT_BIN("fontx/ILGZ16XB.FNT", font_z);
-extern uint8_t font_h[], font_z[];
+#include <fontx/ILGH16XB.h>
+#include <fontx/ILGZ16XB.h>
 #endif
 
 enum AppState {
@@ -80,9 +80,9 @@ void setup()
   tft.bfa.setTextWrap(false);
   
 #if KANJI
-  tft.tfa.setFontx(font_h,font_z);
-  tft.vsa.setFontx(font_h,font_z);
-  tft.bfa.setFontx(font_h,font_z);
+  tft.tfa.setFontx(ILGH16XB,ILGZ16XB);
+  tft.vsa.setFontx(ILGH16XB,ILGZ16XB);
+  tft.bfa.setFontx(ILGH16XB,ILGZ16XB);
 #endif
   gState = AS_INIT;
 }
@@ -201,3 +201,7 @@ void loop()
     gState = AS_READ;
   }
 }
+
+/*** Local variables: ***/
+/*** tab-width:2 ***/
+/*** End: ***/
