@@ -3,13 +3,12 @@
 #include <ESP8266HTTPClient.h>
 #include <time.h>
 
-#include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
+#include <Adafruit_GFX.h>		// https://github.com/adafruit/Adafruit-GFX-Library
 #include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
-#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
 
-#include "LcdScroll.h"
 #include "rssParser.h"
 #include "rssBuf.h"
 
@@ -57,6 +56,7 @@ const uint16_t hSubTitle = 22;
 RssBuf rssBuf;
 const char **pSite = site;
 Humblesoft_ILI9341 tft = Humblesoft_ILI9341();
+RomFontx fontx(ILGH16XB,ILGZ16XB);
 RssParser rss;
 
 void setup()
@@ -80,9 +80,9 @@ void setup()
   tft.bfa.setTextWrap(false);
   
 #if KANJI
-  tft.tfa.setFontx(ILGH16XB,ILGZ16XB);
-  tft.vsa.setFontx(ILGH16XB,ILGZ16XB);
-  tft.bfa.setFontx(ILGH16XB,ILGZ16XB);
+  tft.tfa.setFont(&fontx);
+  tft.vsa.setFont(&fontx);
+  tft.bfa.setFont(&fontx);
 #endif
   gState = AS_INIT;
 }

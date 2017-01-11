@@ -4,10 +4,10 @@
 
 #define USE_KANJI 1
 
-#include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
+#include <Adafruit_GFX.h>		// https://github.com/adafruit/Adafruit-GFX-Library
 #include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
-#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
 #include <ESP8266WiFi.h>
 
@@ -28,6 +28,7 @@
 #define DC 	15
 #define RST	-1
 Humblesoft_ILI9341 tft = Humblesoft_ILI9341(CS,DC,RST);
+RomFontx fontx(ILGH16XB,ILGZ16XB);
 bool serial_out = false;
 
 uint16_t bg    = ILI9341_BLACK;
@@ -114,7 +115,7 @@ void loop() {
     
     tft.setCursor(0, y);
 #if USE_KANJI
-		tft.setFontx(ILGH16XB,ILGZ16XB);
+		tft.setFont(&fontx);
     tft.setTextSize(1);
 #else
     tft.setTextSize(2);
@@ -131,7 +132,7 @@ void loop() {
     tft.setTextColor(cyan,bg);
     tft.printf("%3d", WiFi.RSSI(j));
 #if USE_KANJI
-    tft.setFontx(NULL);
+    tft.setFont();
 #endif
     tft.setTextSize(1);
     tft.setCursor(tft.getCursorX()+1, y + 8);

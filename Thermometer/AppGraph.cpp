@@ -212,9 +212,9 @@ void AppGraph::drawFrame()
   const static uint8_t xpitch[] = {1,3,6};
   uint16_t aColor[3];
   
-  aColor[0] = m_pLcd->color565(80,80,80);
-  aColor[1] = m_pLcd->color565(150,150,150);
-  aColor[2] = m_pLcd->color565(200,200,200);
+  aColor[0] = m_pLcd->colorRGB(80,80,80);
+  aColor[1] = m_pLcd->colorRGB(150,150,150);
+  aColor[2] = m_pLcd->colorRGB(200,200,200);
 
   m_pLcd->setTextSize(1);
   m_pLcd->setTextColor(ILI9341_WHITE);

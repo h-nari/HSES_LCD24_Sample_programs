@@ -1,4 +1,4 @@
-#define USE_STATIC_IP 	1
+#define USE_STATIC_IP 	0
 #define USE_OTA 	1
 
 #include <Arduino.h>
@@ -12,7 +12,7 @@
 #include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
 #include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
-#include <FontxGfx.h>						// https://github.com/h-nari/FontxGfx
+#include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
 
 #include <SD.h>

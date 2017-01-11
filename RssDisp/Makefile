@@ -11,9 +11,9 @@ LIBS += $(HLIB_DIR)/ESP8266WiFi
 LIBS += $(HLIB_DIR)/ESP8266HTTPClient
 LIBS += $(ULIB_DIR)/Adafruit-GFX-Library
 LIBS += $(ULIB_DIR)/Adafruit_ILI9341
-LIBS += $(ULIB_DIR)/Fontx
-LIBS += $(ULIB_DIR)/FontxGfx
-LIBS += $(ULIB_DIR)/Humblesoft_ILI9341
+LIBS += $(ULIB_DIR)/Fontx/src
+LIBS += $(ULIB_DIR)/Humblesoft_GFX/src
+LIBS += $(ULIB_DIR)/Humblesoft_ILI9341/src
 
 include makeEspArduino.mk
 
