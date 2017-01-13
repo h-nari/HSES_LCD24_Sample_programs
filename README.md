@@ -44,14 +44,14 @@ Arduino-IDEのライブラリ管理でインストールできるものもあり
  * コントローラにILI9341を使用したLCD用描画ライブラリ、Adafruit_GFXを継承
  * https://github.com/adafruit/Adafruit_ILI9341
  * バグ修正の必要有
-  * Thermometerが動かない
-  * https://github.com/adafruit/Adafruit_ILI9341/pull/12
+   * Thermometerが動かない
+   * https://github.com/adafruit/Adafruit_ILI9341/pull/12
 * Fontx
  * Adafruit_GFX非依存, Fontxライブラリ
  * https://github.com/h-nari/Fontx
-* FontxGfx
- * Adafruit_GFX向け、Fontx描画機能ライブラリ
- * https://github.com/h-nari/FontxGfx
+* Humblesoft_GFX
+ * Adafruit_GFXを拡張、Fontx描画機能など
+ * https://github.com/h-nari/Humblesoft_GFX
 * Humblesoft_ILI9341
  * Adafruit_ILI9341に漢字表示機能、スクロール機能などを追加
  * https://github.com/h-nari/Humblesoft_ILI9341
