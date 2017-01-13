@@ -22,13 +22,13 @@
 #if USE_KANJI
 #include <fontx/ILGH16XB.h>
 #include <fontx/ILGZ16XB.h>
+RomFontx fontx(ILGH16XB,ILGZ16XB);
 #endif
 
 #define CS 	 2
 #define DC 	15
 #define RST	-1
 Humblesoft_ILI9341 tft = Humblesoft_ILI9341(CS,DC,RST);
-RomFontx fontx(ILGH16XB,ILGZ16XB);
 bool serial_out = false;
 
 uint16_t bg    = ILI9341_BLACK;
