@@ -3,15 +3,9 @@
 LcdMenu::LcdMenu() : LcdWin()
 {
   m_lEntry = NULL;
-#if 0  
-  m_fg        = ILI9341_YELLOW;
-  m_bg	      = ILI9341_BLACK;
-  m_textColor = ILI9341_WHITE;
-#else
-  m_fg        = ILI9341_DARKGREEN;
-  m_bg	      = ILI9341_WHITE;
-  m_textColor = ILI9341_BLUE;
-#endif
+  m_fg        = Humblesoft_ILI9341::rgb("DARKGREEN");
+  m_bg	      = Humblesoft_ILI9341::rgb("WHITE");
+  m_textColor = Humblesoft_ILI9341::rgb("BLUE");
   m_x = 5;
   m_y = 5;
   m_w = 0;

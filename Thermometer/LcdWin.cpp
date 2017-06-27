@@ -6,8 +6,8 @@ LcdWin::LcdWin()
   m_w = 320;
   m_h = 240;
 
-  m_fg = ILI9341_WHITE;
-  m_bg = ILI9341_BLACK;
+  m_fg = Humblesoft_ILI9341::rgb("WHITE");
+  m_bg = Humblesoft_ILI9341::rgb("BLACK");
 
   m_pNext = NULL;
   m_lButton = NULL;

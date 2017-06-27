@@ -27,13 +27,13 @@ AppGraph::AppGraph()
   m_y1 = 240;
 
   m_bGray = false;
-  m_cBg 	= ILI9341_BLACK;
-  m_cFrame 	= ILI9341_WHITE;
-  m_cData[0] 	= ILI9341_WHITE;
-  m_cData[1] 	= ILI9341_BLUE;
-  m_cData[2] 	= ILI9341_GREEN;
-  m_cData[3] 	= ILI9341_YELLOW;
-  m_cData[4] 	= ILI9341_RED;
+  m_cBg 	= Humblesoft_ILI9341::rgb("BLACK");
+  m_cFrame 	= Humblesoft_ILI9341::rgb("WHITE");
+  m_cData[0] 	= Humblesoft_ILI9341::rgb("WHITE");
+  m_cData[1] 	= Humblesoft_ILI9341::rgb("BLUE");
+  m_cData[2] 	= Humblesoft_ILI9341::rgb("GREEN");
+  m_cData[3] 	= Humblesoft_ILI9341::rgb("YELLOW");
+  m_cData[4] 	= Humblesoft_ILI9341::rgb("RED");
 }
 
 void AppGraph::setPos(int16_t x, int16_t y, int16_t w, int16_t h)
@@ -191,7 +191,7 @@ void AppGraph::drawLine(int sid, time_t time, float value)
   uint16_t color;
 
   if(m_bGray || sid < 0 || sid >= APP_CURRENT_VALUE_MAX)
-    color = ILI9341_DARKGREY;
+    color = m_pLcd->rgb("DARKGREY");
   else
     color = m_cData[sid];
   if(y > m_y0 && y < m_y3 && x > m_x0 && x < m_x3)
@@ -200,9 +200,8 @@ void AppGraph::drawLine(int sid, time_t time, float value)
 
 void AppGraph::drawFrame()
 {
-  uint16_t tw,th,tw2,th2;
+  uint16_t tw2,th2;
   int16_t  tx,ty;
-  char buf[10];
   
   m_pLcd->getTextBounds("12", 0, 0, &tx, &ty, &tw2, &th2);
   m_pLcd->fillRect(m_x0, m_y0, m_x3 - m_x0 + 1, m_y3 - m_y0 + 1, m_cBg);
@@ -212,12 +211,12 @@ void AppGraph::drawFrame()
   const static uint8_t xpitch[] = {1,3,6};
   uint16_t aColor[3];
   
-  aColor[0] = m_pLcd->colorRGB(80,80,80);
-  aColor[1] = m_pLcd->colorRGB(150,150,150);
-  aColor[2] = m_pLcd->colorRGB(200,200,200);
+  aColor[0] = m_pLcd->rgb(80,80,80);
+  aColor[1] = m_pLcd->rgb(150,150,150);
+  aColor[2] = m_pLcd->rgb(200,200,200);
 
   m_pLcd->setTextSize(1);
-  m_pLcd->setTextColor(ILI9341_WHITE);
+  m_pLcd->setTextColor("WHITE");
 
   for(int i=0;i<3;i++){
     int w = xpitch[i] * 3600 / m_ax;
@@ -298,7 +297,7 @@ uint16_t AppGraph::getDataColor(int sid)
 {
   uint16_t color;
   if(sid < 0 || sid >= APP_CURRENT_VALUE_MAX)
-    color = ILI9341_DARKGREY;
+    color = Humblesoft_ILI9341::rgb("DARKGREY");
   else
     color = m_cData[sid];
   return color;

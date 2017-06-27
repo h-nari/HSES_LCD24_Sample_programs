@@ -8,7 +8,7 @@ LcdRoot::LcdRoot(LcdDrv *lcd, LcdTouchscreen *tp)
   m_pTp  = tp;
   m_lWin = NULL;
   m_bPressed0 = false;
-  m_bg = ILI9341_BLACK;
+  m_bg = Humblesoft_ILI9341::rgb("BLACK");
 }
 
 void LcdRoot::begin(void)
@@ -20,7 +20,7 @@ void LcdRoot::begin(void)
   
   m_pLcd->begin();
   m_pLcd->setRotation(3);
-  m_pLcd->fillScreen(ILI9341_BLACK);
+  m_pLcd->fillScreen(Humblesoft_ILI9341::rgb("BLACK");
   m_pLcd->setTextSize(2);
   m_pLcd->println("MenuTest.");
   m_pTp->begin();

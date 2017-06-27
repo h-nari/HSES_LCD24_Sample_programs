@@ -4,7 +4,6 @@
 #include <time.h>
 
 #include <Adafruit_GFX.h>		// https://github.com/adafruit/Adafruit-GFX-Library
-#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
 #include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
@@ -42,14 +41,8 @@ enum AppState {
 AppState gState;
 int httpCode;
 
-const uint16_t titleFg = ILI9341_YELLOW;
-const uint16_t titleBg = ILI9341_RED;
-const uint16_t subTitleFg = ILI9341_BLACK;
-const uint16_t subTitleBg = ILI9341_GREENYELLOW;
-const uint16_t itemFg = ILI9341_WHITE;
-const uint16_t itemBg = ILI9341_BLACK;
-const uint16_t timeFg = ILI9341_WHITE;
-const uint16_t timeBg = ILI9341_BLUE;
+uint16_t titleFg,titleBg,subTitleFg,subTitleBg;
+uint16_t itemFg,itemBg,timeFg,timeBg;
 const uint16_t hTitle = 36;
 const uint16_t hSubTitle = 22;
 
@@ -66,6 +59,17 @@ void setup()
   Serial.println("\n\nReset:");
 
   tft.begin();
+
+	titleFg    = tft.rgb("YELLOW");
+	titleBg    = tft.rgb("RED");
+	subTitleFg = tft.rgb("BLACK");
+	subTitleBg = tft.rgb(173,255,47); // greenyellow
+	itemFg     = tft.rgb("WHITE");
+	itemBg     = tft.rgb("BLACK");
+	timeFg     = tft.rgb("WHITE");
+	timeBg     = tft.rgb("BLUE");
+
+	
   tft.setRotation(0);
   tft.setVerticalScrollArea(hTitle + hSubTitle,21);
   int w = tft.width();
@@ -194,9 +198,9 @@ void loop()
       tft.vsa.printf("No Item\n%s", *pSite);
     }
       
-    tft.vsa.setTextColor(ILI9341_YELLOW);
+    tft.vsa.setTextColor("YELLOW");
     tft.vsa.print("\n\n--------------------------");
-    tft.vsa.setTextColor(ILI9341_WHITE);
+    tft.vsa.setTextColor("WHITE");
     if(*++pSite == NULL) pSite = site;
     gState = AS_READ;
   }

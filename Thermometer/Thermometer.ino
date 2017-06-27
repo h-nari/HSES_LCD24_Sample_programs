@@ -1,5 +1,5 @@
-#define USE_STATIC_IP 	0
-#define USE_OTA 	1
+#define USE_STATIC_IP 	1
+#define USE_OTA 	0
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
@@ -10,7 +10,6 @@
 #include <time.h>
 
 #include <Adafruit_GFX.h>				// https://github.com/adafruit/Adafruit-GFX-Library
-#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
 #include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
@@ -65,9 +64,9 @@ TaskQueue queue;
 ParamEntry paramTable[] = {
   { PARAM_CALIBRATION, ""},
 };
-static uint16_t c1 = ILI9341_GREEN;
-static uint16_t c2 = ILI9341_YELLOW;
-static uint16_t bg = ILI9341_BLACK;
+static uint16_t c1 = Humblesoft_ILI9341::rgb("GREEN");
+static uint16_t c2 = Humblesoft_ILI9341::rgb("YELLOW");
+static uint16_t bg = Humblesoft_ILI9341::rgb("BLACK");
 
 #if USE_OTA
 static int8_t ota_col;
@@ -145,7 +144,7 @@ void setup(void){
 
   tft.begin();
   tft.setRotation(0);
-  tft.fillScreen(ILI9341_BLACK);
+  tft.fillScreen("BLACK");
   tft.setTextWrap(false);
   
   // touchscreen calibration 

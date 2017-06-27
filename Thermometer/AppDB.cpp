@@ -18,7 +18,7 @@ bool AppDB::dirCheck(const char *path)
   char *p = strrchr(path,'/');
   if(!p) return false;
   int len = p - path;
-  if(len > sizeof buf - 1) return false;
+  if(len > (int)sizeof(buf) - 1) return false;
   strncpy(buf, path, len);
   buf[len] = 0;
   return SD.mkdir(buf);
@@ -67,7 +67,6 @@ void AppDB::dataPut(const char *sid_str, const char *time_str,
   if(m_vSD)
     dataSave(sid_str, time_str, value_str);
 
-  double d = strtod("10.4", NULL);
   setCurrentValue(sid, value);
 }
 

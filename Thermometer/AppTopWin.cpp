@@ -10,9 +10,9 @@ AppTopWin::AppTopWin() : LcdWin()
   m_pMenu = NULL;
   m_pDB = NULL;
 
-  m_cDate = ILI9341_GREEN;
-  m_cTime = ILI9341_WHITE;
-  m_cAverage = ILI9341_YELLOW;
+  m_cDate    = Humblesoft_ILI9341::rgb("GREEN");
+  m_cTime    = Humblesoft_ILI9341::rgb("WHITE");
+  m_cAverage = Humblesoft_ILI9341::rgb("YELLOW");
 }
 
 void AppTopWin::activated(void)

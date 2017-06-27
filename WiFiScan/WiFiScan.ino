@@ -5,7 +5,6 @@
 #define USE_KANJI 1
 
 #include <Adafruit_GFX.h>		// https://github.com/adafruit/Adafruit-GFX-Library
-#include <Adafruit_ILI9341.h>		// https://github.com/adafruit/Adafruit_ILI9341
 #include <Fontx.h>							// https://github.com/h-nari/Fontx
 #include <Humblesoft_GFX.h>			// https://github.com/h-nari/Humblesoft_GFX
 #include <Humblesoft_ILI9341.h>	// https://github.com/h-nari/Humblesoft_ILI9341
@@ -31,15 +30,8 @@ RomFontx fontx(ILGH16XB,ILGZ16XB);
 Humblesoft_ILI9341 tft = Humblesoft_ILI9341(CS,DC,RST);
 bool serial_out = false;
 
-uint16_t bg    = ILI9341_BLACK;
-uint16_t bg2   = ILI9341_DARKGREY;
-uint16_t white = ILI9341_WHITE;
-uint16_t black = ILI9341_BLACK;
-uint16_t red   = ILI9341_RED;
-uint16_t green = ILI9341_GREEN;
-uint16_t blue  = ILI9341_BLUE;
-uint16_t yellow = ILI9341_YELLOW;
-uint16_t cyan  = ILI9341_CYAN;
+#define bg  "BLACK"
+#define bg2 "DARKGREY"
 
 void setup() {
   Serial.begin(115200);
@@ -49,10 +41,10 @@ void setup() {
   
   tft.fillRect(0,0, tft.width(), Y1, bg2);
   tft.setTextSize(3);
-  tft.setTextColor(black);
+  tft.setTextColor("black");
   tft.setCursor(5,5);
   tft.print("WiFiScan");
-  tft.setTextColor(yellow);
+  tft.setTextColor("yellow");
   tft.setCursor(3,3);
   tft.print("WiFiScan");
 		   
@@ -66,7 +58,7 @@ void setup() {
 void loop() {
   tft.setCursor(X_STAT, Y_STAT0);
   tft.setTextSize(1);
-  tft.setTextColor(white, bg2);
+  tft.setTextColor("white", bg2);
   tft.print("Scan START");
   
   // WiFi.scanNetworks will return the number of networks found
@@ -79,7 +71,7 @@ void loop() {
 
   tft.setCursor(X_STAT, Y_STAT);
   tft.setTextSize(1);
-  tft.setTextColor(red, bg2);
+  tft.setTextColor("red", bg2);
   tft.printf("%d Found.   ", n);
   
   uint16_t sort_tbl[WiFiMax];
@@ -121,7 +113,7 @@ void loop() {
     tft.setTextSize(2);
 #endif
 
-    tft.setTextColor(green, bg);
+    tft.setTextColor("green", bg);
     tft.print(WiFi.SSID(j));
 
     int16_t x = tft.getCursorX();
@@ -129,14 +121,14 @@ void loop() {
       tft.fillRect(x, y, X_SIG - x, LH, bg);
 
     tft.setCursor(X_SIG, y);
-    tft.setTextColor(cyan,bg);
+    tft.setTextColor("cyan",bg);
     tft.printf("%3d", WiFi.RSSI(j));
 #if USE_KANJI
     tft.setFont();
 #endif
     tft.setTextSize(1);
     tft.setCursor(tft.getCursorX()+1, y + 8);
-    tft.setTextColor(blue,bg);
+    tft.setTextColor("blue",bg);
     tft.print("dBm");
 
     y += LH;
